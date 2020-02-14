@@ -1,10 +1,10 @@
 import numpy as np
 import sys
 
-from train_model_wlat_smep import train_net as train_net_lat_smep
-from model_wlat_smep import Network as Network_Lateral_SMEP
-from train_model_wlat_ep_cif import train_net as train_net_lat_cif
-from model_wlat_ep_cif import Network as Network_Lateral_Cif
+#from train_model_wlat_smep import train_net as train_net_lat_smep
+#from model_wlat_smep import Network as Network_Lateral_SMEP
+#from train_model_wlat_ep_cif import train_net as train_net_lat_cif
+#from model_wlat_ep_cif import Network as Network_Lateral_Cif
 from train_model_smep_mod import train_net as train_net_smep_mod
 from model_wlat_smep_mod import Network as Network_SMEP_Mod
 
@@ -22,6 +22,12 @@ def create_hyp_param_combination(hidden_sizes=[500, 500, 500],
     dataset="mnist",
     variant="normal"
 ):
+    '''
+    variant: Choice of non linearity (normal / clipdiff). Clipdiff is -1, 1, clip.
+    alpha_tdep_type: Adaptive choice for learning rates.
+    beta_reg_bool: True if beta sign randomly assigned. False if positive.
+
+    '''
     hp_dict  = {
     "hidden_sizes": hidden_sizes,
     "n_epochs": n_epochs,
@@ -82,7 +88,7 @@ def run_multiple(dirname, L=3, rule='eplat', guess=0, dataset="mnist", exp_type=
         alphas_l=list(np.array(alphas_l, dtype=np.float32))
         
         hp_dict = create_hyp_param_combination(alphas_fwd=alphas_w, alphas_lat=alphas_l, dataset=dataset)
-        train_net_lat_cif(Network_Lateral_Cif(name, hp_dict))
+        #train_net_lat_cif(Network_Lateral_Cif(name, hp_dict))
     if L==3 and rule=='smep':
         if (guess==0) or (guess==1) or (guess==6):
             alphas_w = np.array([0.128, 0.032, 0.008, 0.002], dtype=np.float32)
@@ -138,7 +144,7 @@ def run_multiple(dirname, L=3, rule='eplat', guess=0, dataset="mnist", exp_type=
         
         if exp_type=="normal":
             hp_dict = create_hyp_param_combination(alphas_fwd=alphas_w, alphas_lat=alphas_l, dataset=dataset, beta=np.float32(1.0))
-            train_net_lat_smep(Network_Lateral_SMEP(name, hp_dict))
+            train_net_lat_smep_mod(Network_SMEP_Mod(name, hp_dict))
         if exp_type=="clipdiff":
             print "Modified non linearity"
             hp_dict=create_hyp_param_combination(alphas_fwd=alphas_w, alphas_lat=alphas_l, dataset=dataset, variant="clipdiff")
@@ -233,7 +239,7 @@ def run_experiment(exp_type='normal'):
         dirname='Fast_Net3_reruns/alphainv/'
         run_multiple(dirname, L=3, rule='smep', guess=int(sys.argv[1]), dataset=sys.argv[4], exp_type=exp_type)
     elif (exp_type=='adap_trerr'):
-        dirname='Fast_Net3_reruns/adap_trerr/'
+        dirname='Recheck/adap_trerr_'
         run_multiple(dirname, L=3, rule='smep', guess=int(sys.argv[1]), dataset=sys.argv[4], exp_type=exp_type) 
     elif (exp_type=='adap_trerr_betainc'):
         dirname='Fast_Net3_reruns/adap_trerr/betainc_'
@@ -244,37 +250,48 @@ def run_experiment(exp_type='normal'):
         
 
 if __name__=='__main__':
-    '''
-    #PART1: Code for 1 HL, single run, specifying hyperparams
-    dirname='Net1_Repr/' #CHANGE DIRECTORY CHOICE HERE, .save file will be stored in this directory
-    #dirname = 'Normalized_runs/'
-    name = dirname + 'smep'
-    hpd1 = create_hyp_param_combination(hidden_sizes = [500],
-        n_epochs=100,
-        batch_size=20,
-        n_it_neg=20,
-        n_it_pos=4,
-        epsilon=np.float32(.5),
-        beta=np.float32(1.),
-        beta_reg_bool=False,
-        alpha_tdep_type='constant',
-        dataset="mnist",
-        variant="normal",
-        alphas_fwd= [np.float32(0.5), np.float32(0.375)], 
-        alphas_lat=[np.float32(0.001)], #CHANGE ALPHA LATERAL HERE 
-    )
-    train_net_smep_mod(Network_SMEP_Mod(name, hpd1))
-    '''
     
-    #PART2: Code for 3HL, different variants, predecided learning rate combinations
-    #run_experiment('alpha_segmented_repr')
-    #run_experiment('alphainv')
-    run_experiment('adap_trerr')
-    #run_experiment('alpha_segmented_old_40')
-    #run_experiment('alpha_segmented')
-    #run_experiment('cont_alphasmall')
-    #run_experiment('alphatd2')
-    #run_experiment('alphatd1')
-    #run_experiment('alphadiff')
+    if (sys.argv[1]=='constant_net1'):
+        #PART1: Code for 1 HL, single run, specifying hyperparams
+        dirname='Recheck/' #CHANGE DIRECTORY CHOICE HERE, .save file will be stored in this directory
+        name = dirname + 'net1_smep'
+        hpd1 = create_hyp_param_combination(hidden_sizes = [500],
+            n_epochs=100,
+            batch_size=20,
+            n_it_neg=20,
+            n_it_pos=4,
+            epsilon=np.float32(.5),
+            beta=np.float32(1.),
+            beta_reg_bool=False,
+            alpha_tdep_type='constant',
+            dataset="mnist",
+            variant="normal",
+            alphas_fwd= [np.float32(0.5), np.float32(0.375)], 
+            alphas_lat=[np.float32(0.01)], #CHANGE ALPHA LATERAL HERE 
+        )
+        train_net_smep_mod(Network_SMEP_Mod(name, hpd1))
+    elif (sys.argv[1]=='constant_net3'): 
+        #PART2: Code for 3 HL, single run, specifying hyperparams
+        alphas_w, alphas_l=np.zeros(4), np.zeros(3)
+        tau_w=0.75
+        alphas_w[0]=0.5
+        for l in range(1, 4):
+            alphas_w[l]=alphas_w[l-1]*tau_w
+    
+        tau_l=np.float32(1.5)
+        alphas_l=alphas_w[:-1]*tau_l
+        dirname='Recheck/' #CHANGE DIRECTORY CHOICE HERE, .save file will be stored in this directory
+        name = dirname + 'net3_smep_const'
+        hpd3 = create_hyp_param_combination(alpha_tdep_type='constant',
+            dataset="mnist",
+            variant="normal",
+            alphas_fwd=list(np.asarray(alphas_w, dtype=np.float32)),
+            alphas_lat=list(np.asarray(alphas_l, dtype=np.float32)), #CHANGE ALPHA LATERAL HERE 
+        )
+        train_net_smep_mod(Network_SMEP_Mod(name, hpd3))
+    
+    else:
+        #PART3: Code for 3HL, different variants, predecided learning rate combinations
+        run_experiment('adap_trerr')
 
 

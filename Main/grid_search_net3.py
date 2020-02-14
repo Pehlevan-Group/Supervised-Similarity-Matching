@@ -168,7 +168,13 @@ if __name__=='__main__':
     
     
     #Net3 Case 
-    
+       
+    dataset = 'mnist'
+    dirname= 'Fast_Net3_reruns/EPLat_GS/'
+    lr_all = np.asarray(np.load('Fast_Net3_reruns/lh_grid1.npy'), dtype=np.float32)
+
+    grid_search_over_params(dirname, lr_all, int(sys.argv[1]), mode='eplat_fast', L=3, dataset=dataset, beta_reg_bool=False) 
+    '''
     dataset = 'mnist'
     dirname= 'Fast_Net3_reruns/'
     lr_all = np.asarray(np.load('Fast_Net3_reruns/lh_grid1.npy'), dtype=np.float32)
@@ -178,4 +184,4 @@ if __name__=='__main__':
     
     #alphas_fwd = list(np.array([alphaw1, alphaw2], dtype=np.float32))
     #alphas_lat = list(np.array([alphal], dtype=np.float32))
-    
+    '''
