@@ -1,3 +1,9 @@
+To run single layer str for fixed params:
+sbatch final_str.sh
+
+
+
+
 grid_search_str.py: Reads in LH learning rates and runs the array num.
 grid_search_str_copy.py: :, Also for dense
 

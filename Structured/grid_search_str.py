@@ -3,10 +3,10 @@ import sys
 
 from train_model_smep_str import train_net as train_net_smep_str
 from model_smep_str import Network as Network_Lateral_SMEP_Str
-from Code_Variants.train_model_smep_str_dense import train_net as train_net_smep_str_sdhybrid
-from Code_Variants.model_smep_str_dense import Network as Network_Lateral_SMEP_Str_SDHybrid
-from Code_Variants.train_model_smep_fast import train_net as train_net_smep_fast
-from Code_Variants.model_smep_fast import Network as Network_Lateral_SMEP_Fast
+#from Code_Variants.train_model_smep_str_dense import train_net as train_net_smep_str_sdhybrid
+#from Code_Variants.model_smep_str_dense import Network as Network_Lateral_SMEP_Str_SDHybrid
+#from Code_Variants.train_model_smep_fast import train_net as train_net_smep_fast
+#from Code_Variants.model_smep_fast import Network as Network_Lateral_SMEP_Fast
 
 
 
@@ -49,12 +49,37 @@ def create_hyp_param_combination(  #
         
 
 if __name__=='__main__':
-    lr_all = np.load('lh_grid3.npy')
     r_1, r_2, r_3 = 8, 12, 24
-    alphaw1, alphaw2, alphal = lr_all[int(sys.argv[1]), 0], lr_all[int(sys.argv[1]), 1], lr_all[int(sys.argv[1]), 2]
-    alphas_fwd = list(np.asarray( lr_all[int(sys.argv[1]), :4], dtype=np.float32))
-    alphas_lat = list(np.asarray(lr_all[int(sys.argv[1]), 4:], dtype=np.float32))
+    dataset=sys.argv[2]  #"mnist_reduced" 
+    nps_input = int(sys.argv[3])
+
+    if (sys.argv[1]=='final_net1'):
+        #alphaw1, alphaw2, alphal = lr_all[int(sys.argv[2]), 0], lr_all[int(sys.argv[2]), 1], lr_all[int(sys.argv[2]), 2]
+        alphaw1, alphaw2, alphal = 0.5, 0.375, 0.01
+        alphas_fwd = list(np.asarray([alphaw1, alphaw2], dtype=np.float32))
+        alphas_lat = list(np.asarray([alphal], dtype=np.float32))
+        hp_dict = create_hyp_param_combination(alphas_fwd=alphas_fwd, alphas_lat = alphas_lat, nps=[nps_input], stride = [1, 2], dataset=dataset, n_epochs = 100, radius= [r_1])
+        '''
+        #for single layer case
+        if (dataset=="mnist") and (nps_input==4): 
+            dirname = '/n/scratchlfs02/pehlevan_lab/nmudur_smep/Structured/smep_s2_r{}/'.format(r_1)
+        if (dataset=="mnist_reduced") and (nps_input==4): 
+            dirname = '/n/scratchlfs02/pehlevan_lab/nmudur_smep/Structured/smep_s2_r{}/'.format(r_1)
+        if (dataset=="mnist") and (nps_input==20): 
+            dirname = '/n/scratchlfs02/pehlevan_lab/nmudur_smep/Structured/smep_s2_r{}/'.format(r_1)
+        '''
+        dirname = 'Recheck/'
+        name = dirname+'str_net1_r{}_n{}_{}'.format(r_1, nps_input, 'bfit')
+        train_net_smep_str(Network_Lateral_SMEP_Str(name, hp_dict))
     
+    if (sys.argv[1]=='final_net3'):
+        lr_all = np.load('lh_grid3.npy')
+        #alphas_fwd = list(np.asarray(lr_all[int(sys.argv[2]), :4], dtype=np.float32)) REPLACE WITH FIXED LRS FOR BFIT
+        #alphas_lat = list(np.asarray(lr_all[int(sys.argv[2]), 4:], dtype=np.float32)) 
+        dirname = 'Recheck/'
+        name = dirname+'str_net3'.format(nps_input, int(sys.argv[2]))
+        train_net_smep_str(Network_Lateral_SMEP_Str(name, hp_dict))
+    '''    
     if len(sys.argv)==2: #Default case, GS1 code. Run with GS2
         hp_dict = create_hyp_param_combination(alphas_fwd=alphas_fwd, alphas_lat = alphas_lat, nps=[4])
         dirname = '/n/scratchlfs02/pehlevan_lab/nmudur_smep/Structured/smep_s2_r4_nps4/Full28x28/'
@@ -65,15 +90,15 @@ if __name__=='__main__':
         dataset=sys.argv[2]  #"mnist_reduced"
         nps_input = int(sys.argv[3])
         hp_dict = create_hyp_param_combination(alphas_fwd=alphas_fwd, alphas_lat = alphas_lat, nps=[nps_input, nps_input, nps_input], stride = [1, 2, 4, 8], dataset=dataset, n_epochs = 1000, radius= [r_1, r_2, r_3])
-        '''
+        
         #for single layer case
-        if (dataset=="mnist") and (nps_input==4): 
-            dirname = '/n/scratchlfs02/pehlevan_lab/nmudur_smep/Structured/smep_s2_r{}/'.format(r_1)
-        if (dataset=="mnist_reduced") and (nps_input==4): 
-            dirname = '/n/scratchlfs02/pehlevan_lab/nmudur_smep/Structured/smep_s2_r{}/'.format(r_1)
-        if (dataset=="mnist") and (nps_input==20): 
-            dirname = '/n/scratchlfs02/pehlevan_lab/nmudur_smep/Structured/smep_s2_r{}/'.format(r_1)
-        '''
+        #if (dataset=="mnist") and (nps_input==4): 
+        #    dirname = '/n/scratchlfs02/pehlevan_lab/nmudur_smep/Structured/smep_s2_r{}/'.format(r_1)
+        #if (dataset=="mnist_reduced") and (nps_input==4): 
+        #    dirname = '/n/scratchlfs02/pehlevan_lab/nmudur_smep/Structured/smep_s2_r{}/'.format(r_1)
+        #if (dataset=="mnist") and (nps_input==20): 
+        #    dirname = '/n/scratchlfs02/pehlevan_lab/nmudur_smep/Structured/smep_s2_r{}/'.format(r_1)
+        #
         dirname = 'Structured_Net3/GS1/'
         name = dirname+'str_nps{}_gs{}_1000ep_fast'.format(nps_input, int(sys.argv[1]))
         train_net_smep_str(Network_Lateral_SMEP_Str(name, hp_dict))
@@ -117,5 +142,5 @@ if __name__=='__main__':
                 dirname = '/n/scratchlfs02/pehlevan_lab/nmudur_smep/Structured/smep_s2_r4_nps20/Reduced20x20/'
             name = dirname+'str_mode_{}_nps{}_gs{}'.format(code_version[:3], nps_input, int(sys.argv[1]))
             train_net_smep_str(Network_Lateral_SMEP_Str(name, hp_dict))
-    
+    '''    
 
