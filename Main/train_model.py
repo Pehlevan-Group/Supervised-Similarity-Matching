@@ -174,4 +174,4 @@ net3_betapos = "Recheck/net3_ep_betapos", {
 if __name__ == "__main__":
 
     # TRAIN A NETWORK WITH 1 HIDDEN LAYER
-    train_net(Network(*net1_betasigned))
+    train_net(Network(*net1_betapos))

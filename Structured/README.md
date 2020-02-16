@@ -1,5 +1,6 @@
-To run single layer str for fixed params:
-sbatch final_str.sh
+To run Structured connectivity runs for fixed params:
+Select 'final_net1' or 'final_net3' corresponding to whether a single or three hidden layer network is being run.
+Run 'sbatch final_str.sh' in terminal.
 
 
 

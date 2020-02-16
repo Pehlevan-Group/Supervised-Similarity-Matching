@@ -203,4 +203,4 @@ net3_eplat = "Recheck/net3_eplat",{
 if __name__ == "__main__":
     #print 5
     # TRAIN A NETWORK WITH 1 HIDDEN LAYER
-    train_net(Network(*net3_eplat))
+    train_net(Network(*net1_eplat))

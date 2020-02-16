@@ -74,7 +74,7 @@ if __name__=='__main__':
     
     if (sys.argv[1]=='final_net3'): #Run 3HL Structured for fixed LRs
         lr_all = np.load('lh_grid3.npy')
-        hpdict = create_hyp_param_combination{alphas_lat=list(np.asarray([0.96, 0.24, 0.06], dtype=np.float32)), n_it_neg=500, stride=list([1, 2, 4, 8]), epsilon=0.5, variant='normal', batch_size =20, n_epochs= 555550, beta_reg_bool=False, beta=1.0, alphas_fwd=list(np.asarray([0.64, 0.16, 0.04, 0.01], dtype=np.float32)), radius= list([8, 12, 24]), n_it_pos=8, dataset='mnist', alpha_tdep_type='constant', nps=list([4, 4, 4])}
+        hp_dict = create_hyp_param_combination(alphas_lat=list(np.asarray([0.96, 0.24, 0.06], dtype=np.float32)), n_it_neg=500, stride=list([1, 2, 4, 8]), epsilon=0.5, variant='normal', batch_size =20, n_epochs= 50, beta_reg_bool=False, beta=1.0, alphas_fwd=list(np.asarray([0.64, 0.16, 0.04, 0.01], dtype=np.float32)), radius= list([8, 12, 24]), n_it_pos=8, dataset='mnist', alpha_tdep_type='constant', nps=list([4, 4, 4]))
 
         #alphas_fwd = list(np.asarray(lr_all[int(sys.argv[2]), :4], dtype=np.float32)) REPLACE WITH FIXED LRS FOR BFIT
         #alphas_lat = list(np.asarray(lr_all[int(sys.argv[2]), 4:], dtype=np.float32)) 
