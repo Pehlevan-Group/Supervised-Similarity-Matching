@@ -109,7 +109,7 @@ def train_net(net):
 
 
 # HYPERPARAMETERS FOR A NETWORK WITH 1 HIDDEN LAYER
-net1 = "Recheck_EP/net1_betapos_gs_bfit_full", {
+net1_betapos = "Recheck/net1_ep_betapos", {
 "hidden_sizes" : [500],
 "n_epochs"     : 100,
 "batch_size"   : 20,
@@ -117,9 +117,21 @@ net1 = "Recheck_EP/net1_betapos_gs_bfit_full", {
 "n_it_pos"     : 4,
 "epsilon"      : np.float32(.5),
 "beta"         : np.float32(.5),
-"alphas"       : [np.float32(.5), np.float32(.125)]
+"alphas"       : [np.float32(.5), np.float32(.125)],
+"beta_reg_bool": False
 }
 
+net1_betasigned = "Recheck/net1_ep_betasigned", {
+"hidden_sizes" : [500],
+"n_epochs"     : 100,
+"batch_size"   : 20,
+"n_it_neg"     : 20,
+"n_it_pos"     : 4,
+"epsilon"      : np.float32(.5),
+"beta"         : np.float32(.5),
+"alphas"       : [np.float32(.1), np.float32(.05)],
+"beta_reg_bool": True
+}
 # HYPERPARAMETERS FOR A NETWORK WITH 2 HIDDEN LAYERS
 net2 = "net2", {
 "hidden_sizes" : [500,500],
@@ -129,11 +141,12 @@ net2 = "net2", {
 "n_it_pos"     : 6,
 "epsilon"      : np.float32(.5),
 "beta"         : np.float32(1.),
-"alphas"       : [np.float32(.4), np.float32(.1), np.float32(.01)]
+"alphas"       : [np.float32(.4), np.float32(.1), np.float32(.01)],
+"beta_reg_bool": True
 }
 
 # HYPERPARAMETERS FOR A NETWORK WITH 3 HIDDEN LAYERS
-net3 = "Recheck_EP/net3_betasigned", {
+net3_betasigned = "Recheck/net3_ep_betasigned", {
 "hidden_sizes" : [500,500,500],
 "n_epochs"     : 500,
 "batch_size"   : 20,
@@ -145,7 +158,20 @@ net3 = "Recheck_EP/net3_betasigned", {
 "beta_reg_bool": True
 }
 
+
+net3_betapos = "Recheck/net3_ep_betapos", {
+"hidden_sizes" : [500,500,500],
+"n_epochs"     : 500,
+"batch_size"   : 20,
+"n_it_neg"     : 500,
+"n_it_pos"     : 8,
+"epsilon"      : np.float32(.5),
+"beta"         : np.float32(1.),
+"alphas"       : [np.float32(.128), np.float32(.032), np.float32(.008), np.float32(.002)],
+"beta_reg_bool": False
+}
+
 if __name__ == "__main__":
 
     # TRAIN A NETWORK WITH 1 HIDDEN LAYER
-    train_net(Network(*net3))
+    train_net(Network(*net1_betasigned))

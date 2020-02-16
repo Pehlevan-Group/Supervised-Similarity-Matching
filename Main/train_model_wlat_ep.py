@@ -145,7 +145,7 @@ def train_net(net):
 
 # HYPERPARAMETERS FOR NETWORKS WITH LATERAL CONNECTIONS
 
-net1 = "Representation_Analysis/Recheck_EP/eplat_bfit6_full", {
+net1_eplat = "Recheck/net1_eplat", {
         "hidden_sizes": [500],
         "n_epochs": 40,
         "batch_size": 20,
@@ -187,19 +187,20 @@ net2_lat = "net2_lat", {
     "alphas_lat": [ np.float32(.4), np.float32(.1)]
 }
 
-net3_lat = "net3_lat", {
-    "hidden_sizes": [500, 500, 500],
-    "n_epochs": 500,
-    "batch_size": 20,
-    "n_it_neg": 500,
-    "n_it_pos": 8,
-    "epsilon": np.float32(.5),
-    "beta": np.float32(1.),
-    "alphas_fwd": [np.float32(.128), np.float32(.032), np.float32(.008), np.float32(.002)],
-    "alphas_lat": [np.float32(.128), np.float32(.032), np.float32(.008)]
-}
+net3_eplat = "Recheck/net3_eplat",{
+    'alphas_lat': [0.192, 0.048, 0.012], 
+    'alpha_tdep_bool': False, 
+    'n_it_neg': 500, 
+    'epsilon': 0.5, 
+    'batch_size': 20, 
+    'n_epochs': 250, 
+    'beta_reg_bool': False, 
+    'beta': 1.0, 
+    'alphas_fwd': [0.128, 0.032, 0.008, 0.002], 
+    'n_it_pos': 8, 
+    'hidden_sizes': [500, 500, 500]}
 
 if __name__ == "__main__":
     #print 5
     # TRAIN A NETWORK WITH 1 HIDDEN LAYER
-    train_net(Network(*net1))
+    train_net(Network(*net3_eplat))

@@ -1,6 +1,6 @@
 import cPickle
 from external_world import External_World
-from external_world_str import External_World_Segmented
+#from external_world_str import External_World_Segmented
 import numpy as np
 import os
 import theano
@@ -20,7 +20,7 @@ class Network(object):
         self.biases, self.weights, self.hyperparameters, self.training_curves = self.__load_params(hyperparameters)
 
         # LOAD EXTERNAL WORLD (=DATA)
-        print "Normal dataset loaded"
+        print "Original dataset loaded"
         self.external_world = External_World()
         
         # INITIALIZE PERSISTENT PARTICLES

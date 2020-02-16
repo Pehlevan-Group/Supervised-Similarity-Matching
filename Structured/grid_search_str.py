@@ -53,7 +53,7 @@ if __name__=='__main__':
     dataset=sys.argv[2]  #"mnist_reduced" 
     nps_input = int(sys.argv[3])
 
-    if (sys.argv[1]=='final_net1'):
+    if (sys.argv[1]=='final_net1'): #Run 1HL Structured for fixed LRs
         #alphaw1, alphaw2, alphal = lr_all[int(sys.argv[2]), 0], lr_all[int(sys.argv[2]), 1], lr_all[int(sys.argv[2]), 2]
         alphaw1, alphaw2, alphal = 0.5, 0.375, 0.01
         alphas_fwd = list(np.asarray([alphaw1, alphaw2], dtype=np.float32))
@@ -72,12 +72,14 @@ if __name__=='__main__':
         name = dirname+'str_net1_r{}_n{}_{}'.format(r_1, nps_input, 'bfit')
         train_net_smep_str(Network_Lateral_SMEP_Str(name, hp_dict))
     
-    if (sys.argv[1]=='final_net3'):
+    if (sys.argv[1]=='final_net3'): #Run 3HL Structured for fixed LRs
         lr_all = np.load('lh_grid3.npy')
+        hpdict = create_hyp_param_combination{alphas_lat=list(np.asarray([0.96, 0.24, 0.06], dtype=np.float32)), n_it_neg=500, stride=list([1, 2, 4, 8]), epsilon=0.5, variant='normal', batch_size =20, n_epochs= 555550, beta_reg_bool=False, beta=1.0, alphas_fwd=list(np.asarray([0.64, 0.16, 0.04, 0.01], dtype=np.float32)), radius= list([8, 12, 24]), n_it_pos=8, dataset='mnist', alpha_tdep_type='constant', nps=list([4, 4, 4])}
+
         #alphas_fwd = list(np.asarray(lr_all[int(sys.argv[2]), :4], dtype=np.float32)) REPLACE WITH FIXED LRS FOR BFIT
         #alphas_lat = list(np.asarray(lr_all[int(sys.argv[2]), 4:], dtype=np.float32)) 
         dirname = 'Recheck/'
-        name = dirname+'str_net3'.format(nps_input, int(sys.argv[2]))
+        name = dirname+'str_net3_r{}_n{}_{}'.format(r_1, nps_input, 'bfit')
         train_net_smep_str(Network_Lateral_SMEP_Str(name, hp_dict))
     '''    
     if len(sys.argv)==2: #Default case, GS1 code. Run with GS2

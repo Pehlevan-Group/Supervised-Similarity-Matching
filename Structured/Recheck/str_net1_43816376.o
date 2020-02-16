@@ -387,3 +387,117 @@ Learning Rate for epoch:  [0.5, 0.375, 0.01]
    dlogW1=0.000% dlogW2=0.000%
    dlogL1=0.343%
    valid-10000 E=37.2 C=0.05136 error=2.70%
+   duration=1218.8 min
+Learning Rate for epoch:  [0.5, 0.375, 0.01]
+60-train-50000 E=38.0 C=0.00000 SqNorm=49.81 LinTerm=0.05 QuadTerm=-12.13 QuadLatTerm=0.23 error=0.000%
+   dlogW1=0.000% dlogW2=0.000%
+   dlogL1=0.343%
+   valid-10000 E=37.2 C=0.05136 error=2.70%
+   duration=1239.2 min
+Learning Rate for epoch:  [0.5, 0.375, 0.01]
+61-train-50000 E=38.0 C=0.00000 SqNorm=49.81 LinTerm=0.05 QuadTerm=-12.13 QuadLatTerm=0.23 error=0.000%
+   dlogW1=0.000% dlogW2=0.000%
+   dlogL1=0.343%
+   valid-10000 E=37.2 C=0.05136 error=2.70%
+   duration=1259.6 min
+Learning Rate for epoch:  [0.5, 0.375, 0.01]
+62-train-50000 E=38.0 C=0.00000 SqNorm=49.81 LinTerm=0.05 QuadTerm=-12.13 QuadLatTerm=0.23 error=0.000%
+   dlogW1=0.000% dlogW2=0.000%
+   dlogL1=0.343%
+   valid-10000 E=37.2 C=0.05136 error=2.70%
+   duration=1279.7 min
+Learning Rate for epoch:  [0.5, 0.375, 0.01]
+63-train-50000 E=38.0 C=0.00000 SqNorm=49.81 LinTerm=0.05 QuadTerm=-12.13 QuadLatTerm=0.23 error=0.000%
+   dlogW1=0.000% dlogW2=0.000%
+   dlogL1=0.343%
+   valid-10000 E=37.2 C=0.05136 error=2.70%
+   duration=1300.1 min
+Learning Rate for epoch:  [0.5, 0.375, 0.01]
+64-train-50000 E=38.0 C=0.00000 SqNorm=49.81 LinTerm=0.05 QuadTerm=-12.13 QuadLatTerm=0.23 error=0.000%
+   dlogW1=0.000% dlogW2=0.000%
+   dlogL1=0.343%
+   valid-10000 E=37.2 C=0.05136 error=2.70%
+   duration=1320.3 min
+Learning Rate for epoch:  [0.5, 0.375, 0.01]
+65-train-50000 E=38.0 C=0.00000 SqNorm=49.81 LinTerm=0.05 QuadTerm=-12.13 QuadLatTerm=0.23 error=0.000%
+   dlogW1=0.000% dlogW2=0.000%
+   dlogL1=0.343%
+   valid-10000 E=37.2 C=0.05136 error=2.70%
+   duration=1340.5 min
+Learning Rate for epoch:  [0.5, 0.375, 0.01]
+66-train-50000 E=38.0 C=0.00000 SqNorm=49.81 LinTerm=0.05 QuadTerm=-12.13 QuadLatTerm=0.23 error=0.000%
+   dlogW1=0.000% dlogW2=0.000%
+   dlogL1=0.343%
+   valid-10000 E=37.2 C=0.05136 error=2.70%
+   duration=1360.4 min
+Learning Rate for epoch:  [0.5, 0.375, 0.01]
+67-train-50000 E=38.0 C=0.00000 SqNorm=49.81 LinTerm=0.05 QuadTerm=-12.13 QuadLatTerm=0.23 error=0.000%
+   dlogW1=0.000% dlogW2=0.000%
+   dlogL1=0.343%
+   valid-10000 E=37.2 C=0.05136 error=2.70%
+   duration=1380.3 min
+Learning Rate for epoch:  [0.5, 0.375, 0.01]
+68-train-50000 E=38.0 C=0.00000 SqNorm=49.81 LinTerm=0.05 QuadTerm=-12.13 QuadLatTerm=0.23 error=0.000%
+   dlogW1=0.000% dlogW2=0.000%
+   dlogL1=0.343%
+   valid-10000 E=37.2 C=0.05136 error=2.70%
+   duration=1400.2 min
+Learning Rate for epoch:  [0.5, 0.375, 0.01]
+69-train-50000 E=38.0 C=0.00000 SqNorm=49.81 LinTerm=0.05 QuadTerm=-12.13 QuadLatTerm=0.23 error=0.000%
+   dlogW1=0.000% dlogW2=0.000%
+   dlogL1=0.343%
+   valid-10000 E=37.2 C=0.05136 error=2.70%
+   duration=1419.9 min
+Learning Rate for epoch:  [0.5, 0.375, 0.01]
+70-train-50000 E=38.0 C=0.00000 SqNorm=49.81 LinTerm=0.05 QuadTerm=-12.13 QuadLatTerm=0.23 error=0.000%
+   dlogW1=0.000% dlogW2=0.000%
+   dlogL1=0.343%
+   valid-10000 E=37.2 C=0.05136 error=2.70%
+   duration=1439.9 min
+Learning Rate for epoch:  [0.5, 0.375, 0.01]
+71-train-50000 E=38.0 C=0.00000 SqNorm=49.81 LinTerm=0.05 QuadTerm=-12.13 QuadLatTerm=0.23 error=0.000%
+   dlogW1=0.000% dlogW2=0.000%
+   dlogL1=0.343%
+   valid-10000 E=37.2 C=0.05136 error=2.70%
+   duration=1458.8 min
+Learning Rate for epoch:  [0.5, 0.375, 0.01]
+72-train-50000 E=38.0 C=0.00000 SqNorm=49.81 LinTerm=0.05 QuadTerm=-12.13 QuadLatTerm=0.23 error=0.000%
+   dlogW1=0.000% dlogW2=0.000%
+   dlogL1=0.343%
+   valid-10000 E=37.2 C=0.05136 error=2.70%
+   duration=1477.5 min
+Learning Rate for epoch:  [0.5, 0.375, 0.01]
+73-train-50000 E=38.0 C=0.00000 SqNorm=49.81 LinTerm=0.05 QuadTerm=-12.13 QuadLatTerm=0.23 error=0.000%
+   dlogW1=0.000% dlogW2=0.000%
+   dlogL1=0.343%
+   valid-10000 E=37.2 C=0.05136 error=2.70%
+   duration=1496.8 min
+Learning Rate for epoch:  [0.5, 0.375, 0.01]
+74-train-50000 E=38.0 C=0.00000 SqNorm=49.81 LinTerm=0.05 QuadTerm=-12.13 QuadLatTerm=0.23 error=0.000%
+   dlogW1=0.000% dlogW2=0.000%
+   dlogL1=0.343%
+   valid-10000 E=37.2 C=0.05136 error=2.70%
+   duration=1516.4 min
+Learning Rate for epoch:  [0.5, 0.375, 0.01]
+75-train-50000 E=38.0 C=0.00000 SqNorm=49.81 LinTerm=0.05 QuadTerm=-12.13 QuadLatTerm=0.23 error=0.000%
+   dlogW1=0.000% dlogW2=0.000%
+   dlogL1=0.343%
+   valid-10000 E=37.2 C=0.05136 error=2.70%
+   duration=1535.9 min
+Learning Rate for epoch:  [0.5, 0.375, 0.01]
+76-train-50000 E=38.0 C=0.00000 SqNorm=49.81 LinTerm=0.05 QuadTerm=-12.13 QuadLatTerm=0.23 error=0.000%
+   dlogW1=0.000% dlogW2=0.000%
+   dlogL1=0.343%
+   valid-10000 E=37.2 C=0.05136 error=2.70%
+   duration=1556.1 min
+Learning Rate for epoch:  [0.5, 0.375, 0.01]
+77-train-50000 E=38.0 C=0.00000 SqNorm=49.81 LinTerm=0.05 QuadTerm=-12.13 QuadLatTerm=0.23 error=0.000%
+   dlogW1=0.000% dlogW2=0.000%
+   dlogL1=0.343%
+   valid-10000 E=37.2 C=0.05136 error=2.70%
+   duration=1575.9 min
+Learning Rate for epoch:  [0.5, 0.375, 0.01]
+78-train-50000 E=38.0 C=0.00000 SqNorm=49.81 LinTerm=0.05 QuadTerm=-12.13 QuadLatTerm=0.23 error=0.000%
+   dlogW1=0.000% dlogW2=0.000%
+   dlogL1=0.343%
+   valid-10000 E=37.2 C=0.05136 error=2.70%
