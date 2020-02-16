@@ -28,3 +28,6 @@ Checking non linearity used:  0.0
 Continuing training post Epoch Number 0
 Learning Rate for epoch:  [0.64, 0.16, 0.04, 0.01, 0.96, 0.24, 0.06]
  0-train-50000 E=38.3 C=0.43893 SqNorm=51.93 LinTerm=-2.21 QuadTerm=-12.81 QuadLatTerm=1.40 error=31.526%
+   dlogW1=0.813% dlogW2=0.554% dlogW3=0.874% dlogW4=0.088%
+   dlogL1=14.237% dlogL2=2.036% dlogL3=0.690%
+   valid-10000 E=39.3 C=0.22602 error=11.76%

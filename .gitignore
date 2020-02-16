@@ -2,4 +2,5 @@ Trash/*
 Structured/*.save
 *.pyc
 Main/Recheck/*
+Main/Recheck_Scriptruns/*
 Results/FinalNet1/Old_Final_Models/*
