@@ -12,3 +12,4 @@ This directory is organized as follows:
   * Structured: Code for networks with structured connectivity. (SMEP)
   * Main: Code for networks without structured connectivity. (EP, EP+Lateral, SMEP)
   
+See README file in each folder about the instruction of running the code.
