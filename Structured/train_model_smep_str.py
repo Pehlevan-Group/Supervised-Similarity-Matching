@@ -238,4 +238,4 @@ if __name__ == "__main__":
         "beta_reg_bool": False,
     }
     # Stride field must always start with a 1
-    train_net(Network("/n/scratchlfs02/pehlevan_lab/nmudur_smep/Structured/smep_s2_r4_nps20/smep_bfitlr", net1_structured))
+    train_net(Network("smep_bfitlr", net1_structured))

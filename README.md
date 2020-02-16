@@ -5,5 +5,3 @@ Code, result files and documentation for Supervised Similarity Matching. This di
   * Structured: Code for networks with structured connectivity.
   * Main: Code for networks without structured connectivity.
   
-Files:
-  * spec_file.txt: Conda environment spec file.
