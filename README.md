@@ -1,5 +1,5 @@
 # Supervised-Similarity-Matching
-This repository contains code accompanying the Supervised Similarity Matching Equilibrium Propagation paper. The code in this repo modifies the code for Equilibrium Propagation, released by Scellier & Bengio 2017 [Equilibrium Propagation: Bridging the Gap between Energy-Based Models and Backpropagation](https://www.frontiersin.org/articles/10.3389/fncom.2017.00024/full).
+This repository contains code accompanying the Supervised Similarity Matching Equilibrium Propagation paper. The code in this repo modifies the code for Equilibrium Propagation, released by Scellier & Bengio 2017 [Equilibrium Propagation: Bridging the Gap between Energy-Based Models and Backpropagation](https://www.frontiersin.org/articles/10.3389/fncom.2017.00024/full) and is implemented in the [Theano Deep Learning Framework](http://deeplearning.net/software/theano/).
 
 Learning Rule Variants Implemented:
   * EP, 'betasigned': Equilibrium Propagation without lateral connections, beta (the nudge parameter) is randomly assigned a positive or negative sign post each batch. In the other learning rules, beta is always taken to be positive.
