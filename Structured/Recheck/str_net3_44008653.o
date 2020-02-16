@@ -1,0 +1,30 @@
+('W norm: ', 1.3983784, 1.4009367, ' W norm perelem: ', 2.2750585241051625e-06, 9.116883087485892e-06)
+('M norm: ', 0.70915765, 1.1537472109641198e-06)
+/n/home02/nmudur/Similarity-Matching-Project/Supervised-Similarity-Matching/Structured
+/n/home02/nmudur/Similarity-Matching-Project/Supervised-Similarity-Matching/Structured/../../mnist.pkl.gz
+File opened
+Loaded
+42
+Learning rule: SMEP, Structured connections
+NPS4-4-4
+Stride1-2-4-8
+Radius8-12-24
+Architecture /  (all layers) = 28-14-7-3-10
+name = Recheck/str_net3_r8_n4_bfit.save
+number of epochs = 50
+batch_size = 20
+n_it_neg = 500
+n_it_pos = 8
+epsilon = 0.5
+beta = 1.0
+learning rates forward: alpha_W1=0.640 alpha_W2=0.160 alpha_W3=0.040 alpha_W4=0.010
+
+learning rates lateral: alpha_L1=0.960 alpha_L2=0.240 alpha_L3=0.060
+
+beta sign alternating:  False
+alpha tdep:  constant
+variant:  normal
+Checking non linearity used:  0.0
+Continuing training post Epoch Number 0
+Learning Rate for epoch:  [0.64, 0.16, 0.04, 0.01, 0.96, 0.24, 0.06]
+ 0-train-50000 E=38.3 C=0.43893 SqNorm=51.93 LinTerm=-2.21 QuadTerm=-12.81 QuadLatTerm=1.40 error=31.526%

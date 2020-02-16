@@ -109,7 +109,7 @@ def train_net(net):
 
 
 # HYPERPARAMETERS FOR A NETWORK WITH 1 HIDDEN LAYER
-net1_betapos = "Recheck/net1_ep_betapos", {
+net1_betapos = "Recheck/net1_ep_betapos_run2", {
 "hidden_sizes" : [500],
 "n_epochs"     : 100,
 "batch_size"   : 20,
